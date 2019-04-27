@@ -1,0 +1,21 @@
+version: '3.6'
+
+services:
+  app:
+    tty: true
+    build: .
+    command:
+      - "yarn"
+      - "dev"
+    volumes:
+      - "./src:/app/src"
+    environment:
+      NODE_ENV: development
+    ports:
+      - "3001:3000"
+  database:
+    image: bitnami/mongodb
+    ports:
+      - 27017:27017
+    volumes:
+      - /data/mongodb-persistence:/bitnami

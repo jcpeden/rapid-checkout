@@ -1,0 +1,181 @@
+{
+  "name": "koa-es7-boilerplate",
+  "version": "0.0.0",
+  "description": "A boilerplate for writing Koa 2 apps with Babel.",
+  "author": "Jeff Hansen",
+  "license": "MIT",
+  "engines": {
+    "node": ">=8.0.0",
+    "npm": ">=3.8"
+  },
+  "scripts": {
+    "start": "babel-node dist/bin/www.js",
+    "build": "rimraf dist && cross-env NODE_ENV=production babel src -d dist -s && cross-env NODE_ENV=production next build && cross-env NODE_ENV=production yarn run build-app",
+    "dev": "nodemon src/bin/www.js --watch src",
+    "start-app": "webpack-dev-server --config webpack.dev.js --mode development",
+    "build-app": "webpack --config webpack.prod.js --mode production",
+    "test": "cross-env NODE_ENV=test jest",
+    "cover": "npm run test -- --coverage",
+    "lint": "eslint --fix src && prettier --write \"src/**/*.js\""
+  },
+  "dependencies": {
+    "@koa/cors": "^2.2.2",
+    "@shopify/koa-shopify-auth": "^3.1.8",
+    "@shopify/polaris": "^3.3.0",
+    "@vue/cli": "^3.3.0",
+    "@zeit/next-css": "^1.0.1",
+    "@zeit/next-sass": "^1.0.1",
+    "awilix": "^4.0.1",
+    "awilix-koa": "^3.0.0",
+    "axios": "^0.18.0",
+    "babel-loader": "^8.0.5",
+    "bristol": "^0.4.0",
+    "clean-webpack-plugin": "^1.0.0",
+    "colorcolor": "^1.1.1",
+    "dotenv": "^6.2.0",
+    "fejl": "^1.0.2",
+    "hex-to-hsl": "^1.0.2",
+    "hsl-to-hex": "^1.0.0",
+    "humanize-plus": "^1.8.2",
+    "isomorphic-fetch": "^2.2.1",
+    "js-cookie": "^2.2.0",
+    "koa": "^2.6.2",
+    "koa-bodyparser": "^4.2.1",
+    "koa-compress": "^3.0.0",
+    "koa-nextjs": "^2.0.0",
+    "koa-respond": "^2.1.0",
+    "koa-router": "^7.4.0",
+    "koa-session": "^5.10.1",
+    "koa-static": "^5.0.0",
+    "koa-webpack": "^5.2.1",
+    "lodash": "^4.17.11",
+    "mini-css-extract-plugin": "^0.5.0",
+    "mobile-detect": "^1.4.3",
+    "mongoose": "^5.4.2",
+    "mongoose-unique-validator": "^2.0.2",
+    "next": "^7.0.2",
+    "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "optimize-js-plugin": "^0.0.4",
+    "palin": "^2.2.0",
+    "query-string": "^6.2.0",
+    "react": "^16.7.0",
+    "react-color": "^2.17.0",
+    "react-dom": "^16.7.0",
+    "shopify-api-node": "^2.17.0",
+    "style-loader": "^0.23.1",
+    "terser-webpack-plugin": "^1.2.1",
+    "uglifyjs-webpack-plugin": "^2.1.1",
+    "vue": "^2.5.21",
+    "vue-js-modal": "^1.3.28",
+    "vue-loader": "^15.5.1",
+    "vuera": "^0.2.3",
+    "webpack": "^4.28.1",
+    "webpack-cli": "^3.2.1",
+    "webpack-dev-server": "^3.1.14",
+    "write-file-webpack-plugin": "^4.5.0",
+    "yenv": "^2.1.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.0.0",
+    "@babel/core": "7.0.0",
+    "@babel/node": "7.0.0",
+    "@babel/plugin-proposal-object-rest-spread": "7.0.0",
+    "@babel/plugin-transform-runtime": "7.0.0",
+    "@babel/preset-env": "7.0.0",
+    "@vue/cli-plugin-babel": "^3.3.0",
+    "@vue/cli-plugin-eslint": "^3.3.0",
+    "@vue/cli-service": "^3.3.0",
+    "babel-eslint": "^10.0.1",
+    "babel-plugin-source-map-support": "^2.0.1",
+    "cross-env": "^5.2.0",
+    "eslint": "^5.8.0",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jest": "^22.1.2",
+    "eslint-plugin-node": "^8.0.0",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "husky": "^1.2.1",
+    "jest": "^23.6.0",
+    "lint-staged": "^8.1.0",
+    "node-sass": "^4.9.0",
+    "nodemon": "^1.18.9",
+    "prettier": "^1.15.3",
+    "rimraf": "^2.6.2",
+    "sass-loader": "^7.0.1",
+    "smid": "^0.1.1",
+    "vue-template-compiler": "^2.5.21"
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "plugins": [
+      "jest"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "standard",
+      "prettier",
+      "plugin:jest/recommended"
+    ],
+    "env": {
+      "jest/globals": true
+    }
+  },
+  "prettier": {
+    "singleQuote": true,
+    "semi": false
+  },
+  "lint-staged": {
+    "src/*.js": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "nodemonConfig": {
+    "execMap": {
+      "js": "babel-node"
+    }
+  },
+  "babel": {
+    "sourceMaps": "both",
+    "plugins": [
+      "@babel/plugin-transform-runtime",
+      "@babel/plugin-proposal-object-rest-spread",
+      "babel-plugin-react-require",
+      "@babel/plugin-syntax-dynamic-import",
+      "@babel/plugin-proposal-class-properties",
+      "vuera/babel"
+    ],
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ],
+      "@babel/preset-react"
+    ],
+    "env": {
+      "production": {
+        "plugins": [
+          "source-map-support"
+        ]
+      }
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
+}

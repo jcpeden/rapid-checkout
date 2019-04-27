@@ -1,0 +1,20 @@
+version: '3.6'
+
+services:
+  app:
+    tty: true
+    image: rapid-checkout
+    build: .
+    command:
+      - "yarn"
+      - "start"
+    environment:
+      NODE_ENV: staging
+    ports:
+      - "3001:3000"
+  database:
+    image: bitnami/mongodb
+    ports:
+      - 27018:27017
+    volumes:
+      - /data/mongodb-persistence-staging:/bitnami
