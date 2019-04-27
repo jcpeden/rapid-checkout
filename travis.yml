@@ -1,0 +1,15 @@
+// Setting environment language
+language: node_js
+
+// Using the lastest version of Node.js
+node_js:
+- node
+
+// Script to install dependencies
+before_script:
+
+// The actual build script for Gulp.js
+script:
+
+// Deploying to hosting server via FTP
+after_script:
